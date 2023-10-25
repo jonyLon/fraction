@@ -31,25 +31,25 @@ public:
         return to_string(this->numerator / cutnum()) + "/" + to_string(this->denominator / cutnum());
     }
 
-    Fraction sum(const Fraction& other) {
+    Fraction operator+(const Fraction& other) {
         int dnum = this->denominator * other.denominator;
         int num = this->numerator * other.denominator + other.numerator * this->denominator;
         Fraction res(num, dnum);
         return res;
     }
-    Fraction sub(const Fraction& other) {
+    Fraction operator-(const Fraction& other) {
         int dnum = this->denominator * other.denominator;
         int num = this->numerator * other.denominator - other.numerator * this->denominator;
         Fraction res(num, dnum);
         return res;
     }
-    Fraction mult(const Fraction& other) {
+    Fraction operator*(const Fraction& other) {
         int dnum = this->denominator * other.denominator;
         int num = this->numerator * other.numerator;
         Fraction res(num, dnum);
         return res;
     }
-    Fraction div(const Fraction& other) {
+    Fraction operator/(const Fraction& other) {
         int dnum = this->denominator * other.numerator;
         int num = this->numerator * other.denominator;
         Fraction res(num, dnum);
@@ -67,10 +67,10 @@ int main()
     Fraction First(1, 5);
     Fraction Second(3, 10);
 
-    Fraction Sum = First.sum(Second);
-    Fraction Sub = First.sub(Second);
-    Fraction Mult = First.mult(Second);
-    Fraction Div = First.div(Second);
+    Fraction Sum = First+Second;
+    Fraction Sub = First-Second;
+    Fraction Mult = First*Second;
+    Fraction Div = First/Second;
 
     cout << First.print()  + " + " + Second.print() + " = " + Sum.print() << endl;
     cout << First.print() + " - " + Second.print() + " = " + Sub.print() << endl;
